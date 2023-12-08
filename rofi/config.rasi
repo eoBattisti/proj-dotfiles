@@ -1,0 +1,9 @@
+configuration {
+  display-drun: "Apps:";
+  display-window: "Windows:";
+  show-icons: true;
+  kb-accept-entry: "Control+Shift+space";
+    font: "DroidSansMono Nerd Font 14";
+}
+
+@theme "/usr/local/share/rofi/themes/gruvbox-dark-soft.rasi"
