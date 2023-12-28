@@ -5,7 +5,7 @@ local function custom_on_attach(bufnr)
   local function opts(desc)
     return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
   end
-  
+
   local function edit_or_open()
   local node = api.tree.get_node_under_cursor()
 
@@ -103,6 +103,14 @@ local opts = {
   },
   filters = {
     dotfiles = false,
+    custom = {
+      ".git",
+      "node_modules",
+      ".cache",
+      "__pycache__",
+      "venv",
+      "env"
+    }
   },
   on_attach = custom_on_attach
 }

@@ -60,11 +60,12 @@ return {
        local cmp_selection = { behavior = cmp.SelectBehavior.Select }
 
        cmp.setup({
+         fields = { "kind", "abbr", "menu" },
          sources = {
-           { name = "path" },
-           { name = "buffer" },
            { name = "nvim_lsp" },
            { name = "nvim_lua" },
+           { name = "path" },
+           { name = "buffer" },
          },
          formatting = lsp.cmp_format(),
          mapping = {
