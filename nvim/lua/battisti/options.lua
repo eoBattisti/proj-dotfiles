@@ -54,10 +54,5 @@ vim.opt.autoread = true
 -- Set encoding
 vim.opt.encoding = "utf-8"
 
--- disable netrw at the very start of your init.lua
-vim.g.loaded = 1
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- Clipboard
 vim.opt.clipboard = { "unnamed", "unnamedplus" }     -- Copy/paste between vim and other programs.
