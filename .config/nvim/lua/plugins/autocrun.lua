@@ -1,5 +1,5 @@
 return {
-  dir = "~/Documentos/projects/autocrun.nvim/",
+  "eoBattisti/autocrun.nvim",
   opts = {
     pattern = "*.c",
     cmd = "gcc",
