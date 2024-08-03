@@ -1,9 +1,10 @@
 #!/usr/bin/bash
 
+
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
-  selected=$(find ~/Documentos/projects/ ~/Documentos/work/ | fzf)
+  selected=$(find ~/Documentos/projects/ ~/Documentos/work/ -maxdepth 2 -type d | fzf)
 fi
 
 if [[ -z selected ]]; then
