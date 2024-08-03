@@ -1,5 +1,6 @@
 return {
   "eoBattisti/autocrun.nvim",
+  enabled = false,
   opts = {
     pattern = "*.c",
     cmd = "gcc",
