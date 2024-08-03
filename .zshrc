@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -38,7 +38,7 @@ ZSH_THEME="norm"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -70,10 +70,10 @@ HIST_STAMPS="dd.mm.yyyy"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-  docker
-  docker-compose
+plugins=(git
+	 zsh-syntax-highlighting
+   zsh-autosuggestions
+   poetry
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -99,7 +99,11 @@ fi
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-alias zshconfig="nvim ~/.zshrc"
+
+alias ohmyzsh="nvim ~/.zshrc"
+alias dcup="docker compose up"
+alias dcdown="docker compose down"
+alias dcclean="docker compose down -v"
+alias dcexec="docker compose exec"
+
+alias k="kubectl"

@@ -6,7 +6,6 @@ return {
   config = function()
     require("catppuccin").setup({
     color_overrides = {
-        -- Carburetor
         mocha = {
           rosewater = "#ffd7d9",
           flamingo = "#ffb3b8",
@@ -31,7 +30,7 @@ return {
           surface2 = "#525252",
           surface1 = "#393939",
           surface0 = "#262626",
-          base = "#161616",
+          base = "#000000",
           mantle = "#0b0b0b",
           crust = "#000000"
         },
