@@ -1,7 +1,16 @@
 import:
- - ~/.config/alacritty/themes/gruvbox_material.yaml
+ - ~/.config/alacritty/themes/yugem.yaml
 
-Font:
+window:
+  padding:
+    x: 8
+    y: 8
+
+scrolling:
+  history: 5000
+  multiplier: 3
+
+font:
   normal:
     family: DroidSans Mono Nerd Font
     style: Regular
@@ -11,8 +20,9 @@ Font:
   italic:
     family: DroidSansMono Nerd Font
     style: Italic
-  bolditalic:
+  bold_italic:
     family: DroidSansMono Nerd Font
     style: Bold Italic
+
 shell:
   program: /bin/zsh
