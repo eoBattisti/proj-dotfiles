@@ -70,6 +70,17 @@ DISABLE_AUTO_TITLE="true"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
 HIST_STAMPS="dd.mm.yyyy"
+HISTSIZE=5000
+HISTFILE=${HOME}/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -92,7 +103,9 @@ zinit light Aloxaf/fzf-tab
 zinit snippet OMZP::colored-man-pages
 zinit snippet OMZP::docker-compose
 zinit snippet OMZP::git
+
 # User configuration
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -115,9 +128,3 @@ fi
 # For a full list of active aliases, run `alias`.
 
 alias ohmyzsh="nvim ~/.zshrc"
-alias dcup="docker compose up"
-alias dcdown="docker compose down"
-alias dcclean="docker compose down -v"
-alias dcexec="docker compose exec"
-
-alias k="kubectl"
