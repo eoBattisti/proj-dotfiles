@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.doge_doc_standard_python = "google"
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Exit buffer"} )
 vim.keymap.set("n", "<Esc>", vim.cmd.noh)
 vim.keymap.set("n", "<C-w>j", vim.cmd.vsplit)
 
