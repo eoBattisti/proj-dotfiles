@@ -1,11 +1,11 @@
-return { 
+return {
   "catppuccin/nvim",
   name = "catppuccin",
   lazy = false,
   priority = 1000,
   config = function()
     require("catppuccin").setup({
-    color_overrides = {
+      color_overrides = {
         mocha = {
           rosewater = "#ffd7d9",
           flamingo = "#ffb3b8",
@@ -39,4 +39,3 @@ return {
     vim.cmd.colorscheme "catppuccin-mocha"
   end
 }
-
