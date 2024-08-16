@@ -10,9 +10,7 @@ return {
   dependencies = {
     -- LSP Support
     { 'neovim/nvim-lspconfig' },
-    {
-      'williamboman/mason.nvim',
-    },
+    { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
 
     -- Autocompletion
@@ -103,6 +101,7 @@ return {
       fields = { "kind", "abbr", "menu" },
       sources = {
         { name = "nvim_lsp" },
+        { name = "cody" },
         { name = "nvim_lua" },
         { name = "path" },
         { name = "buffer" },
