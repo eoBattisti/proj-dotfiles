@@ -11,10 +11,20 @@ local opts = {
 return {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
-  branch = 'main',
   lazy = false,
   config = function()
     local configs = require("nvim-treesitter.configs")
     configs.setup(opts)
+
+    local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+      treesitter_parser_config.templ = {
+          install_info = {
+              url = "https://github.com/vrischmann/tree-sitter-templ.git",
+              files = {"src/parser.c", "src/scanner.c"},
+              branch = "master",
+          },
+      }
+
+      vim.treesitter.language.register("templ", "templ")
   end,
 }
