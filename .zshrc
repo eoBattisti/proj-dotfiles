@@ -95,10 +95,15 @@ source $ZSH/oh-my-zsh.sh
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Plugins
+zinit light jeffreytse/zsh-vi-mode
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
+
+zinit ice lucid wait'0'
+zinit light joshskidmore/zsh-fzf-history-search
+
 
 zinit snippet OMZP::colored-man-pages
 zinit snippet OMZP::docker-compose
