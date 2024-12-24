@@ -1,6 +1,3 @@
-local opts = {
-  save_on_toggle = true,
-}
 return {
   'theprimeagen/harpoon',
   branch = "harpoon2",

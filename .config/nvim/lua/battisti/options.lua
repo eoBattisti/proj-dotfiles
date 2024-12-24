@@ -56,3 +56,4 @@ vim.opt.encoding = "utf-8"
 
 -- Clipboard
 vim.opt.clipboard = { "unnamed", "unnamedplus" }     -- Copy/paste between vim and other programs.
+

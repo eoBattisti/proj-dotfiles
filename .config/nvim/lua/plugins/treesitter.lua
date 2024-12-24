@@ -1,5 +1,5 @@
 local opts = {
-  ensure_installed = {"c", "lua", "vim", "vimdoc", "python", "html", "bash"},
+  ensure_installed = {"c", "lua", "vim", "vimdoc", "python", "html", "bash", "toml"},
   sync_install = false,
   auto_install = true,
   highlight = {

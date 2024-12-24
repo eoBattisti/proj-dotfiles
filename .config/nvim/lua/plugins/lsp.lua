@@ -13,32 +13,29 @@ return {
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
 
-    -- Autocompletion
-    { 'hrsh7th/nvim-cmp' },
-    { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-path' },
-    { 'saadparwaiz1/cmp_luasnip' },
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-nvim-lua' },
-    { 'folke/neodev.nvim' },
 
-    -- Snippets
-    { 'L3MON4D3/LuaSnip' },
-
-    -- Snippet Collection (Optional)
-    { 'rafamadriz/friendly-snippets' },
+    {
+      'folke/lazydev.nvim',
+      ft = "lua",
+      opts = {
+       library = {
+          -- See the configuration section for more details
+          -- Load luvit types when the `vim.uv` word is found
+          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        },
+      },
+    },
   },
 
   config = function()
-    local status, neodev = pcall(require, 'neodev')
-    neodev.setup({
-      -- add any options here, or leave empty to use the default settings
-      library = { plugins = { 'nvim-dap-ui' }, types = true },
-    })
-
     local lsp = require("lsp-zero")
-    lsp.preset("recommended")
+    
+    local capabilities = nil
+    if pcall(require, "cmp_nvim_lsp") then
+      capabilities = require("cmp_nvim_lsp").default_capabilities()
+    end
 
+    lsp.preset("recommended")
     lsp.on_attach(function(_, bufnr)
       local opts = { buffer = bufnr, remap = false }
       vim.keymap.set(
@@ -85,39 +82,14 @@ return {
 
     require("mason").setup()
     require("mason-lspconfig").setup({
-      ensure_installed = { "pyright", "ruff_lsp", "yamlls", "bashls",
+      ensure_installed = { "pyright", "ruff", "yamlls", "bashls",
         "clangd", "dockerls", "docker_compose_language_service",
-        "html", "jsonls", "tsserver", "lua_ls", "marksman"
+        "html", "jsonls", "lua_ls", "marksman"
       },
       handlers = {
         lsp.default_setup,
-      }
-    })
-
-    local cmp = require("cmp")
-    local cmp_selection = { behavior = cmp.SelectBehavior.Select }
-
-    cmp.setup({
-      fields = { "kind", "abbr", "menu" },
-      sources = {
-        { name = "nvim_lsp" },
-        { name = "cody" },
-        { name = "nvim_lua" },
-        { name = "path" },
-        { name = "buffer" },
       },
-      formatting = lsp.cmp_format(),
-      mapping = {
-        ["<C-k>"] = cmp.mapping.select_prev_item(cmp_selection),
-        ["<C-j>"] = cmp.mapping.select_next_item(cmp_selection),
-        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<Tab>"] = cmp.mapping.select_next_item(cmp_selection),
-        ["<S-Tab>"] = cmp.mapping.select_next_item(cmp_selection),
-      },
+      capabilities = capabilities,
     })
   end,
 }
