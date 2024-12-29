@@ -25,7 +25,7 @@ local for_empty = s("fore", {
   t({"", "{% endfor %}"}),
 })
 
-local if = s("if", {
+local ifcond = s("if", {
   t("{% if "), i(1, "condition"), t(" %}"),
   t({"", "  "}), i(2, "code"),
   t({"", "{% else %}"}),
@@ -35,5 +35,6 @@ local if = s("if", {
 
 ls.add_snippets("htmldjango", {
   for_loop,
-  for_empty
+  for_empty,
+  ifcond,
 })
