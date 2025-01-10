@@ -12,3 +12,10 @@ vim.keymap.set("n", "<C-k>", "<C-w>k")
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+vim.keymap.set("n", "cs\"", 'ciw\"\"<Esc>P', { desc = "Surround with double quotes" })
+vim.keymap.set("n", "cs\'", 'ciw\'\'<Esc>P', { desc = "Surround with single quotes" })
+vim.keymap.set("n", "cs(", 'ciw()<Esc>P', { desc = "Surround with parentheses" })
+vim.keymap.set("n", "cs[", 'ciw[]<Esc>P', { desc = "Surround with square brackets" })
+vim.keymap.set("n", "cs{", 'ciw{}<Esc>P', { desc = "Surround with curly brackets" })
+vim.keymap.set("n", "cs<", 'ciw<><Esc>P', { desc = "Surround with angle brackets" })
