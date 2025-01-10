@@ -1,4 +1,23 @@
 return {
+  {
+  "ficcdaf/ashen.nvim",
+  lazy = false,
+  priority = 1000,
+  },
+  {
+  "rebelot/kanagawa.nvim",
+  lazy = false,
+  priority = 1000,
+  config = function ()
+    require("kanagawa").setup({
+      theme = "dragon",
+    })
+  end
+  },
+  {
+    "sam4llis/nvim-tundra"
+  },
+  {
   "catppuccin/nvim",
   name = "catppuccin",
   lazy = false,
@@ -36,6 +55,7 @@ return {
         },
       }
     })
-    vim.cmd.colorscheme "catppuccin-mocha"
-  end
+    vim.cmd.colorscheme "ashen"
+  end 
+  }
 }
