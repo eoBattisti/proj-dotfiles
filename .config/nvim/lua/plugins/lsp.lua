@@ -18,7 +18,7 @@ return {
       'folke/lazydev.nvim',
       ft = "lua",
       opts = {
-       library = {
+        library = {
           -- See the configuration section for more details
           -- Load luvit types when the `vim.uv` word is found
           { path = "${3rd}/luv/library", words = { "vim%.uv" } },
@@ -29,7 +29,7 @@ return {
 
   config = function()
     local lsp = require("lsp-zero")
-    
+
     local capabilities = nil
     if pcall(require, "cmp_nvim_lsp") then
       capabilities = require("cmp_nvim_lsp").default_capabilities()

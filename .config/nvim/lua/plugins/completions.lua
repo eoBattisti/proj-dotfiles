@@ -35,7 +35,7 @@ return {
     lspkind.init({})
 
     local cmp = require("cmp")
-    local cmp_selection = { behavior = cmp.SelectBehavior.Select }
+    local cmp_selection = { behavior = cmp.SelectBehavior.Insert }
 
     cmp.setup({
       fields = { "kind", "abbr", "menu" },
@@ -46,11 +46,11 @@ return {
         { name = "luasnip" },
         { name = "path" },
         { name = "buffer" },
-        { 
+        {
           name = "lazydev",
           group_index = 0,
         },
-        { 
+        {
           name = "pypi",
           keyword_length = 4
         },
@@ -65,7 +65,7 @@ return {
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-y>"] = cmp.mapping.confirm(cmp_selection),
         ["<Tab>"] = cmp.mapping.select_next_item(cmp_selection),
         ["<S-Tab>"] = cmp.mapping.select_next_item(cmp_selection),
       },
