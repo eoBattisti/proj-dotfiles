@@ -11,7 +11,7 @@ local opts = {
 return {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
-  lazy = false,
+  event = { "BufReadPost", "BufNewFile" },
   config = function()
     local configs = require("nvim-treesitter.configs")
     configs.setup(opts)

@@ -1,6 +1,6 @@
 return {
   'hrsh7th/nvim-cmp',
-  lazy = false,
+  event = "InsertEnter",
   priority = 100,
   dependencies = {
     { 'hrsh7th/cmp-buffer' },
@@ -20,13 +20,21 @@ return {
 
     -- Plugins
     {
-      "vrslev/cmp-pypi",
+      dir="/home/battisti/Documentos/open-source-projects/cmp-pypi",
+      -- "vrslev/cmp-pypi",
       dependencies = { "nvim-lua/plenary.nvim" },
       ft = "toml",
+      opts = { 
+        pypi_sources = {
+          { name = "pypi", url = "https://pypi.org/simple" },
+          { name = "testpypi", url = "https://test.pypi.org/simple" },
+        }
+      }
     }
   },
   config = function()
     require("battisti.snippets")
+    
 
     vim.opt.completeopt = {"menu", "menuone", "noselect"}
     vim.opt.shortmess:append "c"

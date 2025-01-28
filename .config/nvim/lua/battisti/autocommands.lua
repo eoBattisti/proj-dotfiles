@@ -12,15 +12,18 @@ vim.api.nvim_create_autocmd(
     group = autoFormattingGroup,
     callback = function()
       local file_path = vim.fn.expand("%:p")
-      vim.system({ "isort", "--atomic", file_path }, {}, function(out)
-        if out.code == 0 then
-          vim.schedule(
-            function()
-              vim.cmd("e!")
-            end
-          )
-        end
-      end)
+      vim.system(
+        { "isort", "--sp", "/home/battisti/.config/python-tools/isort.toml", "--atomic", file_path },
+        {},
+        function(out)
+          if out.code == 0 then
+            vim.schedule(
+              function()
+                vim.cmd("e!")
+              end
+            )
+          end
+        end)
     end
   }
 )
