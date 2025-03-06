@@ -33,6 +33,7 @@ vim.opt.listchars = {
 }
 
 vim.opt.showbreak = "↪"
+vim.opt.showmode = false
 
 vim.opt.ruler = true          -- Set ruler
 
@@ -47,6 +48,9 @@ vim.opt.title = true -- Allow vim to set terminal title
 
 vim.opt.termguicolors = true
 vim.opt.guifont = "monospace:h17"
+
+vim.opt.splitright = true
+vim.opt.splitbelow = false
 
 -- Autoread files
 vim.opt.autoread = true

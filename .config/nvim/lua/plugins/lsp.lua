@@ -14,14 +14,11 @@ return {
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
 
-
     {
       'folke/lazydev.nvim',
       ft = "lua",
       opts = {
         library = {
-          -- See the configuration section for more details
-          -- Load luvit types when the `vim.uv` word is found
           { path = "${3rd}/luv/library", words = { "vim%.uv" } },
         },
       },
@@ -35,6 +32,60 @@ return {
     if pcall(require, "cmp_nvim_lsp") then
       capabilities = require("cmp_nvim_lsp").default_capabilities()
     end
+
+    -- Configure hover handler with enhanced styling
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+      vim.lsp.handlers.hover,
+      {
+        border = "rounded",
+        max_width = 80,
+        max_height = 20,
+        -- Enhanced markdown rendering
+        markdown = {
+          -- Enable better markdown rendering
+          enable = true,
+          -- Configure code block highlighting
+          highlight = {
+            enable = true,
+            prefix = true
+          },
+        },
+        -- Style the hover window
+        styling = {
+          -- Add padding inside the hover window
+          pad_left = 1,
+          pad_right = 1,
+        },
+        -- Configure documentation display
+        with_docs = true,
+        -- Format documentation nicely
+        format = function(contents)
+          if not contents then return contents end
+          if type(contents) == 'table' then
+            return table.concat(contents, '\n')
+          end
+          return contents
+        end
+      }
+    )
+
+    -- Configure diagnostic display
+    vim.diagnostic.config({
+      float = {
+        border = "rounded",
+        source = "if_many",
+        header = "",
+        prefix = "",
+        -- Format diagnostic messages
+        format = function(diagnostic)
+          return string.format(
+            "%s %s",
+            diagnostic.message,
+            diagnostic.source and ("(" .. diagnostic.source .. ")") or ""
+          )
+        end,
+      },
+    })
 
     lsp.preset("recommended")
     lsp.on_attach(function(_, bufnr)
@@ -80,6 +131,12 @@ return {
         { buffer = bufnr, remap = false, desc = "Rename buffer references" }
       )
     end)
+
+    -- Optional: Add custom highlighting for the hover window
+    vim.cmd([[
+      highlight! link FloatBorder Normal
+      highlight! link NormalFloat Normal
+    ]])
 
     require("mason").setup()
     require("mason-lspconfig").setup({

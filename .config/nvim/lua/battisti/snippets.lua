@@ -39,10 +39,12 @@ for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/snippets/*.lua", tru
   loadfile(ft_path)()
 end
 
-vim.keymap.set({ "i", "s" }, "<c-k>", function()
+vim.keymap.set({ "i", "s" }, "<c-j>", function()
   return vim.snippet.active { direction = 1 } and vim.snippet.jump(1)
 end, { silent = true })
 
-vim.keymap.set({ "i", "s" }, "<c-j>", function()
+vim.keymap.set({ "i", "s" }, "<c-k>", function()
   return vim.snippet.active { direction = -1 } and vim.snippet.jump(-1)
 end, { silent = true })
+
+vim.keymap.set("n", "<leader><leader>s", "<cmd>source ~/.config/nvim/lua/battisti/snippets.lua<CR>", { silent = true })

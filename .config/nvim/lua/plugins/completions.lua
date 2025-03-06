@@ -80,7 +80,6 @@ return {
       snippet = {
         expand = function(args)
           vim.snippet.expand(args.body)
-          require("luasnip").expand_snippet(args.body)
         end,
       },
     })

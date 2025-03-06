@@ -12,6 +12,11 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export PYPI_USER="pypiserver"
+export PYPI_PASS="A4HL4AspKTwgfLKTtNP974mpmJXFuRWFAt7wbJufhpikhUxenny3sxzXEEeXsxfn"
+export EVENTS_RETRIEVAL_MODULE="sedss.ClientFactory.create_instance"
+export MODEL_STORAGE_MODULE="mlms.model_storage.MLModelStorage"
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
