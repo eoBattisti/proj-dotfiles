@@ -6,7 +6,7 @@ return {
         require("todo-comments").setup {}
 
         vim.keymap.set(
-          "n", "<leader>t", "<cmd>TodoTelescope<CR>",
+          "n", "<leader>t", "<cmd>TodoQuickFix<CR>",
           { noremap = true, silent = true, desc = "List all comments" }
         )
 

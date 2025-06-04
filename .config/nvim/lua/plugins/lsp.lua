@@ -3,6 +3,7 @@
 
 -- TODO: Styles and formatting to a better cmp:
 -- https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/autocomplete.md#change-formatting-of-completion-item
+--
 
 return {
   'VonHeikemen/lsp-zero.nvim',
@@ -32,42 +33,6 @@ return {
     if pcall(require, "cmp_nvim_lsp") then
       capabilities = require("cmp_nvim_lsp").default_capabilities()
     end
-
-    -- Configure hover handler with enhanced styling
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-      vim.lsp.handlers.hover,
-      {
-        border = "rounded",
-        max_width = 80,
-        max_height = 20,
-        -- Enhanced markdown rendering
-        markdown = {
-          -- Enable better markdown rendering
-          enable = true,
-          -- Configure code block highlighting
-          highlight = {
-            enable = true,
-            prefix = true
-          },
-        },
-        -- Style the hover window
-        styling = {
-          -- Add padding inside the hover window
-          pad_left = 1,
-          pad_right = 1,
-        },
-        -- Configure documentation display
-        with_docs = true,
-        -- Format documentation nicely
-        format = function(contents)
-          if not contents then return contents end
-          if type(contents) == 'table' then
-            return table.concat(contents, '\n')
-          end
-          return contents
-        end
-      }
-    )
 
     -- Configure diagnostic display
     vim.diagnostic.config({

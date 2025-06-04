@@ -1,10 +1,22 @@
 return {
   "ibhagwan/fzf-lua",
-  config = function (_, opts)
-    local fzf = require("fzf-lua")
-    local config = fzf.config
-    local actions = fzf.actions
-  end,
+  opts = {
+    winopts = {
+      preview = {
+        scrollbar = false,
+      }
+    },
+    files = {
+      cwd_prompt = false,
+      prompt = "Files: ",
+      previewer = "bat"
+    },
+    keymap = {
+      fzf = {
+        ["ctrl-q"] = "select-all+accept",
+      }
+    }
+  },
   keys = {
     { "<leader>sb", "<cmd>FzfLua buffers<cr>", mode = "n", desc = "Find buffers" },
     { "<leader>sf", "<cmd>FzfLua files<cr>", mode = "n", desc = "Find files" },

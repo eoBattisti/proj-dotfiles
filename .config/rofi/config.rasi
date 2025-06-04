@@ -6,4 +6,6 @@ configuration {
     font: "DroidSansMono Nerd Font 14";
 }
 
-@theme "/usr/local/share/rofi/themes/gruvbox-dark-soft.rasi"
+//@theme "/usr/local/share/rofi/themes/gruvbox-dark-soft.rasi"
+
+@theme "/home/battisti/.local/share/rofi/themes/squared-material-red.rasi"

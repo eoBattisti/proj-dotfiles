@@ -1,10 +1,10 @@
 return {
   {
-    "dgox16/oldworld.nvim",
+    "vague2k/vague.nvim",
     lazy = false,
     priority = 1000,
     config = function ()
-      vim.cmd.colorscheme("oldworld")
+      vim.cmd.colorscheme("vague")
     end
   },
 }

@@ -29,8 +29,8 @@ include-file = ~/.config/polybar/system.ini
 monitor=${env:MONITOR:}
 
 width = 100%
-height = 16pt
-radius = 0
+height = 20pt
+radius = 8pt
 
 offset-x = 5%
 offset-y = 2%
@@ -44,8 +44,8 @@ foreground = ${colors.foreground}
 line-size = 1
 line-color = ${colors.robin_blue}
 
-border-size = 8px
-border-color = ${colors.bg_1}
+border-size = 1px
+border-color = ${colors.foreground}
 
 padding = 1
 
