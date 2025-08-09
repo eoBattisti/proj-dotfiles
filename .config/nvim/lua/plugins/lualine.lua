@@ -1,7 +1,7 @@
 local opts = {
   options = {
     icons_enabled = true,
-    theme = 'codedark',
+    theme = 'vague',
     component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
     disabled_filetypes = {
@@ -43,6 +43,7 @@ local opts = {
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true },
+  event = 'VeryLazy',
   config = function()
     require('lualine').setup(opts)
   end

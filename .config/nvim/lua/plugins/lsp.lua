@@ -34,6 +34,8 @@ return {
       capabilities = require("cmp_nvim_lsp").default_capabilities()
     end
 
+
+
     -- Configure diagnostic display
     vim.diagnostic.config({
       float = {
@@ -64,7 +66,13 @@ return {
         { buffer = bufnr, remap = false, desc = "Go to declaration" }
       )
       vim.keymap.set(
-        "n", "K", function() vim.lsp.buf.hover() end,
+        "n", "K", function()
+          vim.lsp.buf.hover({
+            border = "rounded",
+            title_pos = "center",
+
+          })
+        end,
         { buffer = bufnr, remap = false, desc = "Hover LSP Buffer" }
       )
       vim.keymap.set(
@@ -98,10 +106,10 @@ return {
     end)
 
     -- Optional: Add custom highlighting for the hover window
-    vim.cmd([[
-      highlight! link FloatBorder Normal
-      highlight! link NormalFloat Normal
-    ]])
+    -- vim.cmd([[
+    --   highlight! link FloatBorder Normal
+    --   highlight! link NormalFloat Normal
+    -- ]])
 
     require("mason").setup()
     require("mason-lspconfig").setup({

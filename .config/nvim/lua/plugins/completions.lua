@@ -38,12 +38,10 @@ return {
     vim.opt.completeopt = { "menu", "menuone", "noselect" }
     vim.opt.shortmess:append "c"
 
-    local lspkind = require("lspkind")
-    lspkind.init({})
-
     local cmp = require("cmp")
     local cmp_insert_behaviour = { behavior = cmp.SelectBehavior.Insert, select = true }
     local cmp_select_behaviour = { behavior = cmp.SelectBehavior.Select }
+
 
     local kind_icons = {
       Text = "",
