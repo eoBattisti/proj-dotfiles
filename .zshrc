@@ -110,6 +110,7 @@ zinit light joshskidmore/zsh-fzf-history-search
 zinit snippet OMZP::colored-man-pages
 zinit snippet OMZP::docker-compose
 zinit snippet OMZP::git
+zinit snippet OMZP::sudo
 
 # User configuration
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 
@@ -135,3 +136,13 @@ fi
 # For a full list of active aliases, run `alias`.
 
 alias ohmyzsh="nvim ~/.zshrc"
+
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+alias kt='kubectl --context arn:aws:eks:eu-west-1:261214660547:cluster/test-eks-cluster'
+alias kp='kubectl --context arn:aws:eks:eu-west-1:261214660547:cluster/production-eks-cluster'
+# append completions to fpath
+# fpath+=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+eval "$(~/.local/bin/mise activate zsh)"

@@ -1,10 +1,10 @@
 # Colors (Gruvbox Material Dark Medium)
 colors:
-  primary:
+  - primary:
     background: '0x000000'
     foreground: '0xD2D2D2'
 
-  normal:
+  - normal:
     black:   '0x000000'
     red:     '0xd14a4a'
     green:   '0x4ad158'
@@ -14,7 +14,7 @@ colors:
     cyan:    '0x34ebe8'
     white:   '0xd2d2d2'
 
-  bright:
+  - bright:
     black:   '0x928374'
     red:     '0xea6962'
     green:   '0xa9b665'

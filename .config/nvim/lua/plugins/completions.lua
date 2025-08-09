@@ -19,34 +19,65 @@ return {
     { 'rafamadriz/friendly-snippets' },
 
     -- Plugins
-    {
-      dir="/home/battisti/Documentos/open-source-projects/cmp-pypi",
-      -- "vrslev/cmp-pypi",
-      dependencies = { "nvim-lua/plenary.nvim" },
-      ft = "toml",
-      opts = { 
-        pypi_sources = {
-          { name = "pypi", url = "https://pypi.org/simple" },
-          { name = "testpypi", url = "https://test.pypi.org/simple" },
-        }
-      }
-    }
+    -- {
+    --   dir="/home/battisti/Documentos/open-source-projects/cmp-pypi",
+    --   -- "vrslev/cmp-pypi",
+    --   dependencies = { "nvim-lua/plenary.nvim" },
+    --   ft = "toml",
+    --   opts = {
+    --     pypi_sources = {
+    --       { name = "pypi", url = "https://pypi.org/simple" },
+    --       { name = "testpypi", url = "https://test.pypi.org/simple" },
+    --     }
+    --   }
+    -- }
   },
   config = function()
     require("battisti.snippets")
-    
 
-    vim.opt.completeopt = {"menu", "menuone", "noselect"}
+    vim.opt.completeopt = { "menu", "menuone", "noselect" }
     vim.opt.shortmess:append "c"
 
     local lspkind = require("lspkind")
     lspkind.init({})
 
     local cmp = require("cmp")
-    local cmp_selection = { behavior = cmp.SelectBehavior.Insert }
+    local cmp_insert_behaviour = { behavior = cmp.SelectBehavior.Insert, select = true }
+    local cmp_select_behaviour = { behavior = cmp.SelectBehavior.Select }
+
+    local kind_icons = {
+      Text = "",
+      Method = "󰆧",
+      Function = "󰊕",
+      Constructor = "",
+      Field = "󰇽",
+      Variable = "󰂡",
+      Class = "󰠱",
+      Interface = "",
+      Module = "",
+      Property = "󰜢",
+      Unit = "",
+      Value = "󰎠",
+      Enum = "",
+      Keyword = "󰌋",
+      Snippet = "",
+      Color = "󰏘",
+      File = "󰈙",
+      Reference = "",
+      Folder = "󰉋",
+      EnumMember = "",
+      Constant = "󰏿",
+      Struct = "",
+      Event = "",
+      Operator = "󰆕",
+      TypeParameter = "󰅲",
+    }
 
     cmp.setup({
-      fields = { "kind", "abbr", "menu" },
+      window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      },
       sources = {
         { name = "nvim_lsp" },
         { name = "cody" },
@@ -64,18 +95,36 @@ return {
         },
       },
       formatting = {
-        format = lspkind.cmp_format(),
+        fields = { "kind", "abbr", "menu" },
+        format = function (entry, vim_item)
+          -- Kind icons
+          vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
+
+          -- Source name
+          vim_item.menu = ({
+            nvim_lsp = "[LSP]",
+            luasnip = "[Snip]",
+            buffer = "[Buf]",
+            path = "[Path]",
+            nvim_lua = "[Lua]",
+            cody = "[Cody]",
+            lazydev = "[LazyDev]",
+            pypi = "[PyPI]"
+          })[entry.source.name]
+
+          return vim_item
+        end
       },
       mapping = {
-        ["<C-k>"] = cmp.mapping.select_prev_item(cmp_selection),
-        ["<C-j>"] = cmp.mapping.select_next_item(cmp_selection),
+        ["<C-k>"] = cmp.mapping.select_prev_item(cmp_select_behaviour),
+        ["<C-j>"] = cmp.mapping.select_next_item(cmp_select_behaviour),
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
-        ["<C-y>"] = cmp.mapping.confirm(cmp_selection),
-        ["<Tab>"] = cmp.mapping.select_next_item(cmp_selection),
-        ["<S-Tab>"] = cmp.mapping.select_next_item(cmp_selection),
+        ["<C-y>"] = cmp.mapping.confirm(cmp_insert_behaviour),
+        ["<CR>"] = cmp.mapping.confirm(cmp_insert_behaviour),
+        ["<Tab>"] = cmp.mapping.select_next_item(cmp_select_behaviour),
       },
       snippet = {
         expand = function(args)

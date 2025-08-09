@@ -11,5 +11,17 @@ local cwd = vim.fn.getcwd()
 
 if validate_django_project(cwd) then
   setlocal.filetype = "htmldjango"
+
+  require("lspconfig").pyright.setup({
+    settings = {
+      python = {
+        analysis = {
+          typeCheckingMode = "basic",
+          stubPath = "~/.config/nvim/.venv/lib/python3.11/site-packages/django-stubs/"
+
+        }
+      }
+    }
+  })
 end
 
