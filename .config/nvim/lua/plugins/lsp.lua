@@ -113,7 +113,7 @@ return {
 
     require("mason").setup()
     require("mason-lspconfig").setup({
-      ensure_installed = { "pyright", "ruff", "yamlls", "bashls",
+      ensure_installed = { "ruff", "yamlls", "bashls",
         "clangd", "dockerls", "docker_compose_language_service",
         "html", "jsonls", "lua_ls", "marksman"
       },

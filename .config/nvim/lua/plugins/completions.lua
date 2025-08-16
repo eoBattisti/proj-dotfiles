@@ -1,6 +1,6 @@
 return {
   'hrsh7th/nvim-cmp',
-  event = "InsertEnter",
+  event = "BufEnter",
   priority = 100,
   dependencies = {
     { 'hrsh7th/cmp-buffer' },
@@ -14,7 +14,8 @@ return {
     {
       'L3MON4D3/LuaSnip',
       version = "2.*",
-      build = "make install_jsregexp"
+      build = "make install_jsregexp",
+      event = "InsertEnter",
     },
     { 'rafamadriz/friendly-snippets' },
 

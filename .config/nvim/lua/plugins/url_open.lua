@@ -1,16 +1,7 @@
-local M = {
+return {
   "sontungexpt/url-open",
-  event = "VeryLazy",
   cmd = "URLOpenUnderCursor",
-}
-
-function M.config()
-  local status_ok, url_open = pcall(require, "url-open")
-  if not status_ok then
-    return
-  end
-
-  local opts = {
+  opts = {
     open_app = "default",
     open_only_when_curson_on_url = false,
     highlight_url = {
@@ -30,14 +21,8 @@ function M.config()
       },
     },
     deep_pattern = false,
-  }
-
-  url_open.setup(opts)
-
-  vim.keymap.set(
-    "n", "gx", "<esc>:URLOpenUnderCursor<cr>",
-    { desc = "Open URL under the cursor" }
-  )
-end
-
-return M
+  },
+  keys = {
+    { "gx", "<esc>:URLOpenUnderCursor<cr>", mode = "n", desc = "Open URL under the cursor" },
+  },
+}

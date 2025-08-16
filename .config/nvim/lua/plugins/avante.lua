@@ -13,6 +13,10 @@ return {
     -- add any opts here
     -- for example
     provider = "copilot",
+    selector = {
+      provider = "fzf_lua",
+
+    }
     -- providers = {
     --   claude = {
     --     endpoint = "https://api.anthropic.com",
@@ -30,7 +34,10 @@ return {
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,
     -- "folke/snacks.nvim",             -- for input provider snacks
-    "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
+    {
+      "nvim-tree/nvim-web-devicons",
+      lazy = true,
+    }, -- or echasnovski/mini.icons
     {
       "zbirenbaum/copilot.lua",
       event = "InsertEnter",
