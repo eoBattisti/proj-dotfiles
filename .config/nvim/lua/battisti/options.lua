@@ -1,3 +1,6 @@
+vim.opt.backup = false
+vim.opt.swapfile = false
+
 -- Indentation and tabs
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
@@ -21,6 +24,7 @@ vim.opt.wrap = true
 
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.winborder = "rounded"
 
 vim.opt.guicursor = ""
 
@@ -60,4 +64,3 @@ vim.opt.encoding = "utf-8"
 
 -- Clipboard
 vim.opt.clipboard = { "unnamed", "unnamedplus" }     -- Copy/paste between vim and other programs.
-

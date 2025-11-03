@@ -18,3 +18,34 @@ vim.keymap.set("n", "<A-q>", "<Cmd>cclose<CR>", { desc = "[Q]uit the diagnostics
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+
+vim.keymap.set("n", "<leader>vd", function()
+  vim.diagnostic.open_float({
+    border = "rounded",
+    source = "if_many",
+    header = "",
+    prefix = "",
+  })
+end, { desc = "Toggle diagnostics float window" })
+
+vim.keymap.set("n", "<leader>vca", function()
+  vim.lsp.buf.code_action()
+end, { desc = "LSP Code Action" })
+
+-- Harpoon like bindings
+
+vim.keymap.set("n", "<leader>a", function ()
+  vim.cmd("argadd %")
+  vim.cmd("argdedup")
+end, { desc = "Add current file to the arglist" })
+
+vim.keymap.set("n", "<leader>e", "<Cmd>args<CR>", { desc = "Show all the files in the arglist" })
+vim.keymap.set("n", "<leader>n", "<Cmd>n<CR>", { desc = "Go to the next file in the arglist" })
+vim.keymap.set("n", "<leader>p", "<Cmd>N<CR>", { desc = "Go to the previous file in the arglist" })
+
+
+-- LSP keybindings
+vim.keymap.set("n", "gd", function()
+  vim.lsp.buf.definition()
+end, { desc = "LSP Go to Definition" })

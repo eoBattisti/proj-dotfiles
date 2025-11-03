@@ -8,6 +8,7 @@ local f = ls.function_node
 local c = ls.choice_node
 local d = ls.dynamic_node
 local r = ls.restore_node
+local rep = require("luasnip.extras").rep
 local fmt = require("luasnip.extras.fmt").fmt
 
 
@@ -33,8 +34,36 @@ local ifcond = s("if", {
   t({"", "{% endif %}"}),
 })
 
+local include = s("inc", {
+  t("{% include '"), i(1, "template.html"), t("' %}"),
+})
+
+local extends = s("ext", {
+  t("{% extends '"), i(1, "base.html"), t("' %}"),
+})
+
+local loaded = s("load", {
+  t("{% load "), i(1, "library"), t(" %}"),
+})
+
+local static = s("static", {
+  t("{% static '"), i(1, "path/to/file"), t("' %}"),
+})
+
+
+local block = s("block", {
+  t("{% block "), i(1, "block_name"), t(" %}"),
+  t({"", "  "}), i(2, "code"),
+  t({"{% endblock "}), rep(1), t(" %}"),
+})
+
 ls.add_snippets("htmldjango", {
   for_loop,
   for_empty,
   ifcond,
+  include,
+  extends,
+  loaded,
+  static,
+  block,
 })
