@@ -1,0 +1,57 @@
+-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+-- This config is DEPRECATED.
+-- Use the configs in `lsp/` instead (requires Nvim 0.11).
+--
+-- ALL configs in `lua/lspconfig/configs/` will be DELETED.
+-- They exist only to support Nvim 0.10 or older.
+-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+return {
+	cmd = { 'htmx-lsp' },
+	filetypes = {
+		'aspnetcorerazor',
+		'astro',
+		'astro-markdown',
+		'blade',
+		'clojure',
+		'django-html',
+		'htmldjango',
+		'edge',
+		'eelixir',
+		'elixir',
+		'ejs',
+		'erb',
+		'eruby',
+		'gohtml',
+		'gohtmltmpl',
+		'haml',
+		'handlebars',
+		'hbs',
+		'html',
+		'htmlangular',
+		'html-eex',
+		'heex',
+		'jade',
+		'leaf',
+		'liquid',
+		'markdown',
+		'mdx',
+		'mustache',
+		'njk',
+		'nunjucks',
+		'php',
+		'razor',
+		'slim',
+		'twig',
+		'javascript',
+		'javascriptreact',
+		'reason',
+		'rescript',
+		'typescript',
+		'typescriptreact',
+		'vue',
+		'svelte',
+		'templ',
+	},
+	root_markers = { '.git' },
+	single_file_support = true,
+}

@@ -5,7 +5,6 @@ vim.opt.swapfile = false
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
-vim.opt.expandtab = true
 vim.opt.autoindent = true
 
 -- Search
@@ -64,3 +63,6 @@ vim.opt.encoding = "utf-8"
 
 -- Clipboard
 vim.opt.clipboard = { "unnamed", "unnamedplus" }     -- Copy/paste between vim and other programs.
+
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1

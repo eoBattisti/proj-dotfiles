@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Exit buffer"} )
+vim.keymap.set('n', '<leader>"', 'ciw"<C-r>""<Esc>')
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Exit buffer", silent = true } )
 vim.keymap.set("n", "<Esc>", vim.cmd.noh)
 
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })

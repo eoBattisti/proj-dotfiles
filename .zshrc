@@ -102,6 +102,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
+zinit light MichaelAquilina/zsh-you-should-use
 
 zinit ice lucid wait'0'
 zinit light joshskidmore/zsh-fzf-history-search
@@ -139,10 +140,13 @@ alias ohmyzsh="nvim ~/.zshrc"
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
-alias kt='kubectl --context arn:aws:eks:eu-west-1:261214660547:cluster/test-eks-cluster'
-alias kp='kubectl --context arn:aws:eks:eu-west-1:261214660547:cluster/production-eks-cluster'
+alias ls='eza'
 # append completions to fpath
 # fpath+=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
 eval "$(~/.local/bin/mise activate zsh)"
+
+
+# opencode
+export PATH=/home/battisti/.opencode/bin:$PATH

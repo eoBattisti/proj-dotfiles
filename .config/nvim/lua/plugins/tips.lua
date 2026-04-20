@@ -1,6 +1,6 @@
 return {
-  "saxon1964/neovim-tips",
-  version = "*", -- Only update on tagged releases
+  dir = "~/work/open-source/neovim-tips/",
+  -- version = "*", -- Only update on tagged releases
   lazy = false,  -- Load on startup (recommended for daily tip feature)
   dependencies = {
     "MunifTanjim/nui.nvim",
@@ -17,7 +17,7 @@ return {
     warn_on_conflicts = true,
     -- OPTIONAL: Daily tip mode (default: 1)
     -- 0 = off, 1 = once per day, 2 = every startup
-    daily_tip = 1,
+    daily_tip = 0,
     -- OPTIONAL: Bookmark symbol (default: "🌟 ")
     bookmark_symbol = "🌟 ",
   },

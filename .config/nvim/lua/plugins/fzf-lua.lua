@@ -25,6 +25,6 @@ return {
     { "<leader>sk",  "<cmd>FzfLua keymaps<cr>",              mode = "n", desc = "Find keymaps" },
     { "<leader>st",  "<cmd>FzfLua live_grep<cr>",            mode = "n", desc = "Grep string" },
     { "<leader>sr",  "<cmd>FzfLua lsp_references<cr>",       mode = "n", desc = "Search for references" },
-    { "<leader>sr",  "<cmd>FzfLua lsp_document_symbols<cr>", mode = "n", desc = "Search for references" },
+    { "<leader>ss",  "<cmd>FzfLua lsp_document_symbols<cr>", mode = "n", desc = "Search for document symbols" },
   }
 }
