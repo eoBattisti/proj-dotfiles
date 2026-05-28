@@ -11,13 +11,13 @@ return {
 	},
 	keys = {
 		{ 
-			"<leader>e",  
+			"<leader>fm",  
 			function() require("mini.files").open(vim.uv.cwd(), true) end,
 			mode = "n",
 			desc = "Open mini.files in the (cwd)", 
 		},
 		{
-			"<leader>E",  
+			"<leader>FM",  
 			function() require("mini.files").open(vim.api.nvim_buf_get_name(0), true) end,
 			mode = "n",
 			desc = "Open mini.files (Directory of current file)", 

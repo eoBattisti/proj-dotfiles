@@ -16,12 +16,14 @@ vim.diagnostic.config({
   },
 })
 
+-- vim.lsp.enable('docker_compose_language_server')
 vim.lsp.enable('basedpyright')
 vim.lsp.enable('bashls')
+vim.lsp.enable('clangd')
 vim.lsp.enable('djlsp')
--- vim.lsp.enable('docker_compose_language_server')
 vim.lsp.enable('dockerls')
 vim.lsp.enable('gh_actions')
+vim.lsp.enable('gopls')
 vim.lsp.enable('html')
 vim.lsp.enable('htmx')
 vim.lsp.enable('lua_ls')
