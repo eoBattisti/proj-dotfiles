@@ -6,21 +6,22 @@ else
   selected=$(find ~/projects/ ~/work/ ~/notes/ -maxdepth 2 -type d | fzf)
 fi
 
+selected_name=$(basename "$selected" | tr . _)
+
 if [[ -z $selected ]]; then
   exit 0
 fi
 
 branch_name=""
-
 if [[ -d "$selected/.git" ]]; then
-	echo "Dir is a git dir"
-	branch_name=$(git -C "$selected" branch | fzf | sed 's/\* //' | xargs)
+	branch_name=$(git -C "$selected" worktree list | fzf | cut -d " " -f 1 | xargs)
 fi
 
-selected_name=$(basename "$selected" | tr . _)
 
 if [[ -n $branch_name ]]; then
-	selected_name="$selected_name-<$branch_name>"
+	selected_branch_name=$(basename "$branch_name" | tr . _)
+	selected=$branch_name
+	selected_name="$selected_name-<$selected_branch_name>"
 fi
 
 tmux_running=$(pgrep tmux)
@@ -32,7 +33,7 @@ fi
 
 if ! tmux has-session -t=$selected_name 2> /dev/null; then
   if [[ -n $branch_name ]]; then
-    tmux new-session -s "$selected_name" -c "$selected" -d "git switch $branch_name; exec $SHELL"
+    tmux new-session -s "$selected_name" -c "$selected" -d 
   else
     tmux new-session -s "$selected_name" -c "$selected" -d
   fi
