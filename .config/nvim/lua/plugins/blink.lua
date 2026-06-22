@@ -56,7 +56,7 @@ return {
         auto_show_delay_ms = 250,
         draw = {
           padding = { 0, 1 },
-          componets = {
+          components = {
             kind_icon = {
               text = function(ctx) return ' ' .. ctx.kind_icon .. ctx.icon_gap .. ' ' end
             }
@@ -70,7 +70,15 @@ return {
     -- elsewhere in your config, without redefining it, due to `opts_extend`
 		snippets = { preset = 'luasnip' },
     sources = {
-      default = { 'lsp', 'path', 'snippets', },
+      default = { 'lazydev', 'lsp', 'path', 'snippets', },
+			providers = {
+				lazydev = {
+					name = "LazyDev",
+					module = "lazydev.integrations.blink",
+					score_offset = 100,
+				},
+
+			},
 			per_filetype = {
 				markdown = {
 					"lsp",

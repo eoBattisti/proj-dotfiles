@@ -16,8 +16,13 @@ vim.keymap.set("n", "<A-k>", "<Cmd>cprev<CR>", { desc = "Go to previous diagnost
 vim.keymap.set("n", "<A-q>", "<Cmd>cclose<CR>", { desc = "[Q]uit the diagnostics" })
 
 
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)"})
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)"})
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)"})
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)"})
+
+vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 
 
 vim.keymap.set("n", "<leader>vd", function()
@@ -28,10 +33,6 @@ vim.keymap.set("n", "<leader>vd", function()
     prefix = "",
   })
 end, { desc = "Toggle diagnostics float window" })
-
-vim.keymap.set("n", "<leader>vca", function()
-  vim.lsp.buf.code_action()
-end, { desc = "LSP Code Action" })
 
 -- Harpoon like bindings
 
@@ -49,3 +50,9 @@ vim.keymap.set("n", "<leader>p", "<Cmd>N<CR>", { desc = "Go to the previous file
 vim.keymap.set("n", "gd", function()
   vim.lsp.buf.definition()
 end, { desc = "LSP Go to Definition" })
+
+vim.keymap.set("n", "<leader>vca", function()
+  vim.lsp.buf.code_action()
+end, { desc = "LSP Code Action" })
+
+
